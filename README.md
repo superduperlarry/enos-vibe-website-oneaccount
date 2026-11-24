@@ -1,6 +1,6 @@
 # ENOS — marketing site
 
-**ENOS_Website_v4_24Nov2026 · INTERNAL DRAFT** for internal, investor and partner review; not for publication. Supersedes v3. v4 rewrites the copy to the ENOS One story: one-person companies lead, every business type is served, USDT replaces USDC, and the page adds a proof strip and a mission section.
+**ENOS_Website_v5_24Nov2026 · INTERNAL DRAFT** for internal, investor and partner review; not for publication. Supersedes v4 on branch `brand-book-v5`. v5 applies the ENOS Brand Book (Masterbrand Edition 02, 2026): its colours, type, shape, motion and design elements.
 
 Single-page marketing site built with Next.js (App Router), TypeScript, Tailwind CSS v4, Framer Motion and three.js. It has no backend, and Vercel deploys it with default settings.
 
@@ -57,20 +57,21 @@ app/
   page.tsx         section order
   globals.css      ENOS brand tokens, marquee, grain
 components/
-  Nav, Hero, Globe (three.js), Marquee, Problem, Solution (3D phone),
-  ProofStrip, FlowStory (pinned scroll story), WaysIn (mission + every customer type),
+  Nav, Hero (cropped e / optional Globe), Problem, Solution (3D phone),
+  GreenBand, Slash (placeholder), FlowStory (pinned scroll story), WaysIn (mission + every customer type),
   Features, FinalCTA, Footer, Reveal
 lib/
   site.ts          page settings and proof figures
   land-dots.json   pre-computed land points for the globe (Natural Earth 110m, public domain)
-public/            ENOS wordmark, "e" mark, favicon
+public/            ENOS wordmark (white, Deep Green), e mark (white, chartreuse, Deep Green), favicon
 ```
 
-## Design system (ENOS brand)
+## Design system — ENOS Brand Book (Masterbrand Edition 02)
 
-- **Colours:** forest `#001A0F` / `#002415` / `#00331E`, lime accent `#E1FF33`, teal `#66D7D7` (`#138F89` for text on light backgrounds), amber `#FFD470`, and light sections in paper `#F7F7F3` / mist `#ECEDE7`.
-- **Type:** Playfair Display for headlines, with the accent word in italic. Epilogue for body text and Spline Sans Mono for labels. All three fonts are self-hosted through `@fontsource`.
-- **Hero:** a three.js particle globe. The Global South is lit in lime, and animated payment corridors run between cities. The globe follows the mouse and scroll, pauses when it's off-screen, and stays still for visitors whose system is set to reduce motion. The route list is illustrative.
-- **Scroll story (`FlowStory.tsx`):** a 420vh section with a pinned scene. Invoices fly in from Lagos, Manila, Karachi and São Paulo over local payment rails, the balance counts up, the USD and USDC bars fill, AI and SaaS tools snap onto the account, and a revenue line climbs. All figures are illustrative.
-- **App animations:** the balance counts up when the phone scrolls into view, a "paid" notification springs in, the Pay button ripples and the recent payments slide in.
-- **Motion:** scroll-linked 3D phone, a giant-word parallax behind it, an italic marquee band, and content that de-blurs in on scroll. All motion respects the visitor's reduce-motion setting.
+- **Palette (assets):** Deep Green `#123D32` (heroes, covers), Parchment `#E9E2D5` (light grounds), White, Ink `#171A18`. ENOS Green `#00A94F` is used once per view: the one full-green band. Chartreuse `#D8FF32` marks the accent word and the cropped e on Deep Green. Supporting colours: Mineral Green `#315E50` for panels, Saffron `#D9A441` for thin outlines on Deep Green, and Ube Halaya `#5B3D8F` only on anything AI.
+- **Section rhythm:** Deep Green → ENOS Green → Parchment → White → Deep Green → Parchment → White → Deep Green.
+- **Type:** Playfair Display 700 headlines in Title Case, with one italic accent at 500. Epilogue for body text. Spline Sans Mono for eyebrows and labels (uppercase, 0.16em, with a short leading rule). Inter for the product UI (phone, account card, invoice chips), with tabular figures.
+- **Shape:** cards 20px, panels 32px, pill buttons. Warm, green-tinted shadows.
+- **Motion:** fade and rise on `cubic-bezier(0.16, 1, 0.3, 1)`, a slight lift on hover, `scale(0.97)` on press. No infinite decorative loops: the marquee is gone and the payment toast plays once.
+- **Design elements:** the stylized e, cropped to the artboard edge with its vertex showing, appears in the hero, the mission card and the closing section. `components/Slash.tsx` is a **placeholder** for the enos slash; swap in the official asset.
+- **Hero visual switch:** `site.heroVisual` is `"e"` by default, following the brand book. Set it to `"globe"` to restore the v4 particle globe (recoloured to brand).
