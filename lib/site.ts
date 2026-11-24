@@ -10,6 +10,8 @@ export const site = {
   signupUrl: "#get-started",
   // Partner and investor enquiries.
   contactEmail: "lawrence@enosone.com",
+  // Hero visual: "e" follows the Masterbrand (cropped e, no abstract globes). "globe" restores the v4 particle globe.
+  heroVisual: "e" as "e" | "globe",
   // Shown in the footer while the page is a draft.
   draftNote: "Draft for internal, investor and partner review · Not for publication · Illustrative figures marked on page",
 };

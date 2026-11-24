@@ -1,23 +1,51 @@
 @import "tailwindcss";
 
-/* ENOS brand tokens — taken from the ENOS brand guidelines and the current enosone.com */
+/*
+ * ENOS Masterbrand · Edition 02 (2026) — website = Assets palette.
+ * Proportion: Deep Green 45 · Parchment 30 · White 12 · supporting greens 6 · ENOS Green 4 · Saffron 3 · Indigo 2.
+ * ENOS Green highlights ONE thing per view (a key number, a CTA). Ube Halaya marks AI only.
+ * Chartreuse is the accent on Deep Green (italic accent words, the cropped e). Hex taken from the Masterbrand Lime Yellow.
+ */
 @theme {
-  --color-forest-950: #001a0f;
-  --color-forest-900: #002415;
-  --color-forest-800: #00331e;
-  --color-forest-700: #0b4a2e;
-  --color-lime: #e1ff33;
-  --color-teal: #66d7d7;
-  --color-teal-ink: #138f89;
-  --color-amber: #ffd470;
-  --color-paper: #f7f7f3;
-  --color-mist: #ecede7;
-  --color-ink: #002415;
-  --color-stone: #5f7268;
+  /* Core */
+  --color-deep: #123d32;
+  --color-deep-800: #0e3329;
+  --color-deep-900: #0a2a21;
+  --color-parchment: #e9e2d5;
+  --color-ink: #171a18;
+  --color-ink-2: #53595f;
+  --color-muted: #666d76;
+  --color-line: #e2e4e8;
+  --color-page: #f3f4f6;
+
+  /* ENOS Green scale (UI) */
+  --color-enos: #00a94f;
+  --color-enos-50: #e6f6ed;
+  --color-enos-300: #66cb95;
+  --color-enos-600: #00873f;
+  --color-enos-700: #007637;
+  --color-enos-800: #005d2b;
+
+  /* Supporting greens */
+  --color-mineral: #315e50;
+  --color-verdigris: #6e9487;
+  --color-sage: #a2b9ae;
+  --color-nil: #d2e7de;
+
+  /* Accents */
+  --color-chartreuse: #d8ff32;
+  --color-saffron: #d9a441;
+  --color-indigo: #2f4373;
+  --color-lagoon: #1d6e73;
+  --color-ube: #5b3d8f;
+  --color-ube-tint: #efecf4;
 
   --font-display: "Playfair Display", "Times New Roman", Georgia, serif;
-  --font-sans: "Epilogue", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Spline Sans Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "Epilogue", "Noto Sans", system-ui, sans-serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, monospace;
+  --font-ui: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -27,38 +55,81 @@ html {
 }
 
 body {
-  background: var(--color-forest-950);
-  color: #fff;
+  background: var(--color-deep-900);
+  color: var(--color-ink);
 }
 
-.kicker {
+/* Headlines: Playfair 700, Title Case, tight. One italic accent word at 500. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+.display em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Eyebrow: mono, uppercase, 0.16em, with a short leading rule */
+.eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
 }
 
-/* Film grain on dark sections */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Deep Green ground, per the brand book's green spread */
+.ground-deep {
+  background:
+    radial-gradient(125% 150% at 88% 8%, rgba(29, 110, 115, 0.16) 0%, rgba(29, 110, 115, 0) 55%),
+    linear-gradient(160deg, #123d32 0%, #0e3329 60%, #0a2a21 100%);
+}
+
+/* Fine grain, 4–8%, dark grounds only */
 .grain::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.07;
+  opacity: 0.06;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* Infinite marquee */
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-.marquee {
-  animation: marquee var(--marquee-speed, 40s) linear infinite;
-}
+/* Warm, green-tinted elevation */
+.shadow-warm-sm { box-shadow: 0 1px 2px rgba(24, 58, 45, 0.06), 0 6px 18px -8px rgba(24, 58, 45, 0.16); }
+.shadow-warm-md { box-shadow: 0 2px 6px rgba(24, 58, 45, 0.06), 0 22px 44px -18px rgba(24, 58, 45, 0.28); }
+.shadow-warm-lg { box-shadow: 0 4px 10px rgba(24, 58, 45, 0.08), 0 40px 80px -28px rgba(24, 58, 45, 0.42); }
+
+/* Press: slight scale. Hover: subtle lift. */
+.press { transition: transform 140ms ease, background-color 180ms ease, box-shadow 220ms ease; }
+.press:active { transform: scale(0.97); }
+.lift { transition: transform 220ms ease, box-shadow 220ms ease; }
+.lift:hover { transform: translateY(-3px); }
+
+.tnum { font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee { animation: none; }
+  .lift:hover { transform: none; }
 }
