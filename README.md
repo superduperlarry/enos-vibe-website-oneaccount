@@ -1,6 +1,6 @@
 # ENOS — marketing site
 
-**ENOS_Website_v5_24Nov2026 · INTERNAL DRAFT** for internal, investor and partner review; not for publication. Supersedes v4 on branch `brand-book-v5`. v5 applies the ENOS Brand Book (Masterbrand Edition 02, 2026): its colours, type, shape, motion and design elements.
+**ENOS_Website_v6_24Nov2026 · INTERNAL DRAFT** for internal, investor and partner review; not for publication. One codebase serves two designs: **`/`** has the globe hero and **`/latest`** has the brand-book cropped e. Everything else is shared and follows the ENOS Brand Book (Masterbrand Edition 02). v4 is kept at git tag `v4-archive`.
 
 Single-page marketing site built with Next.js (App Router), TypeScript, Tailwind CSS v4, Framer Motion and three.js. It has no backend, and Vercel deploys it with default settings.
 
@@ -74,4 +74,4 @@ public/            ENOS wordmark (white, Deep Green), e mark (white, chartreuse,
 - **Shape:** cards 20px, panels 32px, pill buttons. Warm, green-tinted shadows.
 - **Motion:** fade and rise on `cubic-bezier(0.16, 1, 0.3, 1)`, a slight lift on hover, `scale(0.97)` on press. No infinite decorative loops: the marquee is gone and the payment toast plays once.
 - **Design elements:** the stylized e, cropped to the artboard edge with its vertex showing, appears in the hero, the mission card and the closing section. `components/Slash.tsx` is a **placeholder** for the enos slash; swap in the official asset.
-- **Hero visual switch:** `site.heroVisual` is `"e"` by default, following the brand book. Set it to `"globe"` to restore the v4 particle globe (recoloured to brand).
+- **Two heroes:** `app/page.tsx` renders the globe and `app/latest/page.tsx` renders the cropped e. Both use `components/HomePage.tsx`, so every other change applies to both. A Globe | Latest toggle (bottom-left) is for reviewers only; turn it off with `site.showVersionSwitch`.

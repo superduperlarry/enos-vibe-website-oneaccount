@@ -143,7 +143,7 @@ export default function Globe({ className = "" }: { className?: string }) {
     // ---- Dark core so the far side doesn't show through ----
     const core = new THREE.Mesh(
       new THREE.SphereGeometry(0.985, 64, 64),
-      new THREE.MeshBasicMaterial({ color: 0x001a0f, transparent: true, opacity: 0.92 })
+      new THREE.MeshBasicMaterial({ color: 0x0a2a21, transparent: true, opacity: 0.92 })
     );
     world.add(core);
 
@@ -156,7 +156,7 @@ export default function Globe({ className = "" }: { className?: string }) {
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
         vertexShader: `varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);} `,
-        fragmentShader: `varying vec3 vN; void main(){ float i = pow(0.62 - dot(vN, vec3(0.0,0.0,1.0)), 4.0); gl_FragColor = vec4(0.45, 0.80, 0.45, 1.0) * i * 0.55; }`,
+        fragmentShader: `varying vec3 vN; void main(){ float i = pow(0.62 - dot(vN, vec3(0.0,0.0,1.0)), 4.0); gl_FragColor = vec4(0.40, 0.66, 0.31, 1.0) * i * 0.55; }`,
       })
     );
     scene.add(atmo);
@@ -183,7 +183,7 @@ export default function Globe({ className = "" }: { className?: string }) {
           float dist = head - vT;
           float comet = dist > 0.0 ? exp(-dist * 9.0) : 0.0;
           float base = 0.16;
-          vec3 c = mix(vec3(0.40, 0.84, 0.84), vec3(0.88, 1.0, 0.2), comet);
+          vec3 c = mix(vec3(0.64, 0.73, 0.68), vec3(0.85, 1.0, 0.2), comet);
           gl_FragColor = vec4(c, (base + comet * 1.3) * vFacing);
         }`,
     });
@@ -223,7 +223,7 @@ export default function Globe({ className = "" }: { className?: string }) {
         gl_Position = projectionMatrix * mv; }`,
       fragmentShader: `varying float vF; void main(){ float d = length(gl_PointCoord-0.5);
         float ring = smoothstep(0.5,0.42,d) * smoothstep(0.30,0.40,d); float dot = smoothstep(0.16,0.0,d);
-        gl_FragColor = vec4(0.88,1.0,0.2,1.0) * (ring*0.6 + dot) * vF; }`,
+        gl_FragColor = vec4(0.85,1.0,0.2,1.0) * (ring*0.6 + dot) * vF; }`,
     });
     world.add(new THREE.Points(beaconGeo, beaconMat));
 
@@ -240,7 +240,7 @@ export default function Globe({ className = "" }: { className?: string }) {
     dustGeo.setAttribute("position", new THREE.BufferAttribute(dust, 3));
     const dustPts = new THREE.Points(
       dustGeo,
-      new THREE.PointsMaterial({ color: 0x9fe3a0, size: 0.012, transparent: true, opacity: 0.45, depthWrite: false, blending: THREE.AdditiveBlending })
+      new THREE.PointsMaterial({ color: 0xa2b9ae, size: 0.012, transparent: true, opacity: 0.45, depthWrite: false, blending: THREE.AdditiveBlending })
     );
     scene.add(dustPts);
 

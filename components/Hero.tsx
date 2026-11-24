@@ -13,7 +13,7 @@ const Globe = dynamic(() => import("./Globe"), { ssr: false });
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export default function Hero() {
+export default function Hero({ visual = site.heroVisual }: { visual?: "e" | "globe" }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section id="top" ref={ref} className="ground-deep grain relative overflow-hidden text-white">
       {/* Brand device: the stylized e, cropped and anchored to the top-right edge, vertex showing */}
-      {site.heroVisual === "e" ? (
+      {visual === "e" ? (
         <motion.div
           style={{ y: eY }}
           initial={reduce ? false : { opacity: 0, x: 40 }}
@@ -40,13 +40,19 @@ export default function Hero() {
           <Image src={eMark} alt="" priority className="h-auto w-full" />
         </motion.div>
       ) : (
-        <div className="absolute inset-0 md:left-[40%]" aria-hidden>
+        <motion.div
+          initial={reduce ? false : { opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8, ease }}
+          className="absolute inset-x-[-30%] top-[40px] h-[420px] md:inset-x-auto md:bottom-[-2%] md:left-[38%] md:right-[-16%] md:top-[4%] md:h-auto lg:left-[30%] lg:right-[-10%]"
+          aria-hidden
+        >
           <Globe className="h-full w-full" />
-        </div>
+        </motion.div>
       )}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(10,42,33,.85)_0%,rgba(10,42,33,.55)_45%,transparent_75%)] lg:w-[70%]" aria-hidden />
 
-      <div className="relative z-10 mx-auto max-w-[1320px] px-6 pb-12 pt-36 md:px-10 md:pb-14 md:pt-48">
+      <div className={`relative z-10 mx-auto max-w-[1320px] px-6 pb-12 md:px-10 md:pb-14 md:pt-48 ${visual === "globe" ? "pt-[440px]" : "pt-36"}`}>
         <motion.p {...rise(0.1)} className="eyebrow text-enos-300">
           {site.product} · {site.categoryLine}
         </motion.p>
