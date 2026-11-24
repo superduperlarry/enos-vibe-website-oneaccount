@@ -1,4 +1,5 @@
-import { Globe, KeyRound, Wallet } from "lucide-react";
+import { ArrowRight, Globe, KeyRound, Wallet } from "lucide-react";
+import { site } from "@/lib/site";
 import Reveal from "./Reveal";
 
 const pains = [
@@ -22,27 +23,46 @@ const pains = [
 export default function Problem() {
   return (
     <section className="bg-parchment text-ink">
-      <div className="mx-auto max-w-[1320px] px-6 py-24 md:px-10 md:py-36">
-        <Reveal>
-          <p className="eyebrow text-lagoon">The Problem</p>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="display mt-8 max-w-[16ch] text-[clamp(2.4rem,5vw,4.8rem)] text-deep">
-            Your Customers Are Global. <em className="text-enos-600">Your Bank Isn&apos;t.</em>
-          </h2>
-        </Reveal>
+      <div className="mx-auto max-w-[1320px] px-6 py-20 md:px-10 md:py-28">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-end lg:gap-16">
+          <div>
+            <Reveal>
+              <p className="eyebrow text-lagoon">The Problem</p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="display mt-8 text-[clamp(2.4rem,4.6vw,4.4rem)] text-deep">
+                Your Customers Are Global. <em className="text-enos-600">Your Bank Isn&apos;t.</em>
+              </h2>
+            </Reveal>
+          </div>
+          {/* The one concrete point: who ENOS is for, in a line */}
+          <Reveal delay={0.1}>
+            <p className="border-l-2 border-deep/25 pl-5 text-[17px] leading-[1.62] text-ink-2">
+              One-person companies and small businesses across the Global South sell to the world, but{" "}
+              <b className="font-semibold text-deep">can&apos;t get Visa, Mastercard or Stripe.</b> ENOS gives them one account in USD and{" "}
+              {site.stablecoin} instead.
+            </p>
+          </Reveal>
+        </div>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:mt-14 md:grid-cols-3">
           {pains.map((p, i) => (
             <Reveal key={p.title} delay={0.08 + i * 0.06}>
               <article className="lift shadow-warm-sm h-full rounded-[20px] bg-white p-8 md:p-10">
                 <p.icon size={26} strokeWidth={1.6} className="text-deep" />
-                <h3 className="display mt-10 text-[1.6rem] leading-[1.1] text-deep">{p.title}</h3>
+                <h3 className="display mt-7 text-[1.6rem] leading-[1.1] text-deep">{p.title}</h3>
                 <p className="mt-3 text-[17px] leading-[1.62] text-ink-2">{p.body}</p>
               </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.1}>
+          <a href="#savings" className="group mt-8 inline-flex items-center gap-2 text-[15px] font-semibold text-deep underline-offset-4 hover:underline">
+            See what fees and FX cost you in a year
+            <ArrowRight size={16} strokeWidth={1.8} className="transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );

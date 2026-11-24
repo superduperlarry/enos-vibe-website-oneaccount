@@ -30,7 +30,7 @@ export default function Solution() {
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-md text-lg leading-[1.62] text-ink-2">
               Invoice anyone. Clients pay on the networks they already use — QR, mobile wallets, instant bank transfer. Hold
-              dollars. Then run your business on the same AI and software the first billion uses, with partner trials built in.
+              dollars. Then run your business on the same AI and software the world's best startups use, with partner trials built in.
             </p>
           </Reveal>
           <Reveal delay={0.14}>
@@ -56,6 +56,7 @@ export default function Solution() {
           >
             <Phone />
           </motion.div>
+          <p className="mono-label absolute bottom-0 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] text-muted">Illustrative product view</p>
 
           <motion.div style={{ y: cardA }} className="absolute left-0 top-16 z-10 hidden w-[214px] font-[family-name:var(--font-ui)] sm:block lg:-left-8">
             <div className="shadow-warm-md rounded-[20px] border border-line bg-white p-4">
@@ -63,7 +64,7 @@ export default function Solution() {
                 <span className="font-mono text-[11px] text-muted">INV-0142</span>
                 <span className="rounded-full bg-enos-50 px-2.5 py-0.5 text-[11px] font-medium text-enos-800">Paid</span>
               </div>
-              <p className="mt-3 text-[13px] text-muted">Studio Lumen · Berlin</p>
+              <p className="mt-3 text-[13px] text-muted">Studio Lumen · Dubai</p>
               <p className="tnum mt-0.5 text-[26px] font-semibold tracking-[-0.02em] text-ink">$1,200.00</p>
               <p className="mt-1 text-[12px] text-muted">Paid by local bank transfer</p>
             </div>
@@ -148,7 +149,7 @@ function Phone() {
               </span>
               <span className="flex-1 text-[12px] leading-tight">
                 <b className="block font-semibold">Payment received</b>
-                <span className="text-muted">Berlin · local transfer</span>
+                <span className="text-muted">Dubai · local transfer</span>
               </span>
               <span className="tnum text-[12px] font-semibold text-enos-700">+$1,200</span>
             </motion.div>

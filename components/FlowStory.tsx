@@ -23,7 +23,7 @@ const steps = [
     n: "01",
     title: "Get Paid",
     accent: "From Anywhere.",
-    body: "Send an invoice. Clients pay on the local networks they already use — QR, mobile wallet, instant bank transfer. Your business doesn't need a local bank ID. ENOS does.",
+    body: "Send an invoice. Clients pay on the local networks they already use — QR, mobile wallet, instant bank transfer.",
   },
   {
     n: "02",
@@ -35,7 +35,7 @@ const steps = [
     n: "03",
     title: "Plug In",
     accent: "AI and SaaS.",
-    body: "Pay for the AI APIs, assistants and software the first billion uses — straight from your account, with partner trials to start.",
+    body: "Pay for the AI APIs, assistants and software the world's best startups use — straight from your account, with partner trials to start.",
   },
   {
     n: "04",
@@ -46,10 +46,10 @@ const steps = [
 ];
 
 const invoices = [
-  { city: "Lagos", rail: "Bank transfer", amount: "+$3,400", from: [-330, -210] as const, mid: [-200, -170] as const },
+  { city: "Dubai", rail: "Bank transfer", amount: "+$3,400", from: [-330, -210] as const, mid: [-200, -170] as const },
   { city: "Manila", rail: "Mobile wallet", amount: "+$1,200", from: [-360, 40] as const, mid: [-220, 10] as const },
-  { city: "Karachi", rail: "QR payment", amount: "+$2,150", from: [-300, 230] as const, mid: [-190, 170] as const },
-  { city: "São Paulo", rail: "Instant transfer", amount: "+$5,730", from: [330, -220] as const, mid: [210, -170] as const },
+  { city: "Cebu", rail: "QR payment", amount: "+$2,150", from: [-300, 230] as const, mid: [-190, 170] as const },
+  { city: "Hong Kong", rail: "Instant transfer", amount: "+$5,730", from: [330, -220] as const, mid: [210, -170] as const },
 ];
 
 const tools = [
@@ -73,14 +73,15 @@ export default function FlowStory() {
   useMotionValueEvent(p, "change", (v) => setStep(Math.min(3, Math.max(0, Math.floor(v * 4.0001)))));
 
   // Balance counts up as invoices land
-  const balance = useTransform(p, [0.04, 0.24], [0, 12480.55], { clamp: true });
+  const balance = useTransform(p, [0.04, 0.24], [0, 12480], { clamp: true });
   const balanceText = useTransform(balance, money);
   const usdPct = useTransform(p, [0.28, 0.45], ["0%", "63%"]);
   const usdcPct = useTransform(p, [0.3, 0.47], ["0%", "37%"]);
   const holdOpacity = useTransform(p, [0.27, 0.33], [0, 1]);
 
   // Growth
-  const revenue = useTransform(p, [0.76, 0.96], [1200, 18400], { clamp: true });
+  // Grows from this month's $12.5k (the four invoices above) to an illustrative $18.4k.
+  const revenue = useTransform(p, [0.76, 0.96], [12500, 18400], { clamp: true });
   const revenueText = useTransform(revenue, (v) => "$" + (v / 1000).toFixed(1) + "k");
   const chartDraw = useTransform(p, [0.76, 0.96], [0, 1]);
   const chartOpacity = useTransform(p, [0.74, 0.78], [0, 1]);
@@ -182,7 +183,7 @@ export default function FlowStory() {
                   <span className="h-2 w-2 rounded-full bg-enos" />
                 </div>
                 <motion.p className="tnum mt-4 text-[40px] font-semibold leading-none tracking-[-0.02em]">{balanceText}</motion.p>
-                <p className="mt-2 text-xs text-white/45">Paid from 4 countries · local rails</p>
+                <p className="mt-2 text-xs text-white/45">4 invoices · paid on local rails in HK, PH and UAE</p>
                 <motion.div style={{ opacity: holdOpacity }} className="mt-5 space-y-2.5">
                   <Bar label="USD" value="$7,863" width={usdPct} />
                   <Bar label={site.stablecoin} value="4,617" width={usdcPct} />
@@ -199,18 +200,26 @@ export default function FlowStory() {
               ))}
 
               {/* Unlock badges */}
-              <motion.div style={{ opacity: badges }} className="absolute bottom-2 left-1/2 z-30 flex -translate-x-1/2 gap-2">
-                {["Cards", "Credit", "Treasury"].map((b) => (
-                  <span key={b} className="whitespace-nowrap rounded-full border border-saffron/70 bg-deep-900/85 px-4 py-2 text-sm text-saffron backdrop-blur">
-                    {b} · next
-                  </span>
-                ))}
+              <motion.div style={{ opacity: badges }} className="absolute bottom-0 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2">
+                <div className="flex gap-2">
+                  {["Cards", "Credit", "Treasury"].map((b) => (
+                    <span key={b} className="whitespace-nowrap rounded-full border border-saffron/70 bg-deep-900/85 px-4 py-2 text-sm text-saffron backdrop-blur">
+                      {b}
+                    </span>
+                  ))}
+                </div>
+                <span className="mono-label whitespace-nowrap text-[10px] text-saffron/80">Coming next, for qualified businesses</span>
               </motion.div>
             </div>
           </div>
         </div>
 
-        <p className="mono-label absolute bottom-5 right-6 text-[10px] text-white/35 md:right-10">Illustrative figures</p>
+        <p className="mono-label absolute bottom-5 right-6 flex items-center gap-4 text-[10px] text-white/55 md:right-10">
+          <span>Illustrative figures</span>
+          <a href="#who" className="text-white/70 underline-offset-4 hover:text-white hover:underline">
+            Skip the story ↓
+          </a>
+        </p>
       </div>
     </section>
   );

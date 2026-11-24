@@ -1,32 +1,50 @@
 import Image from "next/image";
-import { ArrowUpRight, Building2, Landmark, Network, Sparkles, Store } from "lucide-react";
-import { site } from "@/lib/site";
+import { ArrowRight, Building2, Landmark, Network, Store } from "lucide-react";
+import { proof, site } from "@/lib/site";
 import eMark from "@/public/enos-e-chartreuse.png";
 import Reveal from "./Reveal";
 
+const sales = `mailto:${site.contactEmail}?subject=${encodeURIComponent("ENOS for my business")}`;
+
 const others = [
-  { icon: Store, title: "Merchants & SMBs", body: "Collect on every local rail, hold dollars, pay suppliers and staff." },
-  { icon: Building2, title: "Enterprises & Traders", body: "Named accounts, multi-rail collection and same-day payouts on hard corridors." },
-  { icon: Network, title: "PSPs & Platforms", body: "Wholesale rails and one API for every local network we connect." },
-  { icon: Landmark, title: "SPVs & Deal Vehicles", body: "An account in the vehicle's own name, with pooling and distributions." },
+  { icon: Store, title: "Merchants & SMBs", body: "Collect on every local rail, hold dollars, pay suppliers and staff.", cta: "Open Your Account", href: site.signupUrl },
+  { icon: Building2, title: "Enterprises & Traders", body: "Named accounts, multi-rail collection and same-day payouts on hard corridors.", cta: "Talk to Sales", href: sales },
+  { icon: Network, title: "PSPs & Platforms", body: "Wholesale rails and one API for every local network we connect.", cta: "Talk to Sales", href: sales },
+  { icon: Landmark, title: "SPVs & Deal Vehicles", body: "An account in the vehicle's own name, with pooling and distributions.", cta: "Talk to Sales", href: sales },
 ];
+
+// Proof from the canonical figures in lib/site.ts: merchants and live markets.
+const shown = proof.filter((p) => p.value === "60K" || p.value === "3");
 
 export default function WaysIn() {
   return (
     <section id="who" className="scroll-mt-20 bg-parchment text-ink">
-      <div className="mx-auto max-w-[1320px] px-6 py-24 md:px-10 md:py-36">
-        <Reveal>
-          <p className="eyebrow text-lagoon">Our Mission</p>
-          <h2 className="display mt-8 max-w-[18ch] text-[clamp(2.4rem,5vw,4.8rem)] text-deep">
-            Built for One-Person Companies. <em className="text-enos-600">Ready for Every Business.</em>
-          </h2>
-          <p className="mt-8 max-w-2xl text-lg leading-[1.62] text-ink-2">
-            The next billion businesses start with one founder and a laptop. We build {site.product} for them first — and the same
-            account, the same rails, scale to the largest company on the network.
-          </p>
-        </Reveal>
+      <div className="mx-auto max-w-[1320px] px-6 py-20 md:px-10 md:py-28">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-end lg:gap-16">
+          <Reveal>
+            <p className="eyebrow text-lagoon">Our Mission</p>
+            <h2 className="display mt-8 max-w-[18ch] text-[clamp(2.4rem,5vw,4.8rem)] text-deep">
+              Built for One-Person Companies. <em className="text-enos-600">Ready for Every Business.</em>
+            </h2>
+            <p className="mt-8 max-w-2xl text-lg leading-[1.62] text-ink-2">
+              The next billion businesses start with one founder and a laptop. We build {site.product} for them first — and the same
+              account, the same rails, scale to the largest company on the network.
+            </p>
+          </Reveal>
+          {/* Proof that it already runs at scale */}
+          <Reveal delay={0.08}>
+            <dl className="grid grid-cols-2 gap-6 border-t border-deep/15 pt-6 lg:grid-cols-1 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              {shown.map((p) => (
+                <div key={p.label}>
+                  <dt className="display text-[clamp(2.4rem,3.4vw,3.2rem)] leading-none text-enos-600">{p.value}</dt>
+                  <dd className="mono-label mt-2 leading-relaxed text-ink-2">{p.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
 
-        <div className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[1.1fr_1fr]">
+        <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-4 md:mt-14 lg:grid-cols-[1.1fr_1fr]">
           <Reveal>
             <article className="ground-deep relative flex h-full flex-col justify-between overflow-hidden rounded-[32px] p-8 text-white md:p-12">
               <Image src={eMark} alt="" aria-hidden className="pointer-events-none absolute -right-[12%] -top-[22%] h-auto w-[34%]" />
@@ -53,40 +71,19 @@ export default function WaysIn() {
           <div className="grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
             {others.map((o, i) => (
               <Reveal key={o.title} delay={0.06 * (i + 1)}>
-                <article className="lift shadow-warm-sm h-full rounded-[20px] bg-white p-7">
+                <article className="lift shadow-warm-sm flex h-full flex-col rounded-[20px] bg-white p-7">
                   <o.icon size={24} strokeWidth={1.6} className="text-deep" />
                   <h3 className="display mt-6 text-[1.45rem] leading-tight text-deep">{o.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-ink-2">{o.body}</p>
+                  <p className="mt-2 flex-1 text-[15px] leading-[1.6] text-ink-2">{o.body}</p>
+                  <a href={o.href} className="group mt-5 inline-flex items-center gap-1.5 self-start text-[14px] font-semibold text-enos-700 underline-offset-4 hover:underline">
+                    {o.cta}
+                    <ArrowRight size={15} strokeWidth={1.8} className="transition-transform group-hover:translate-x-0.5" />
+                  </a>
                 </article>
               </Reveal>
             ))}
           </div>
         </div>
-
-        {/* AI → Ube Halaya */}
-        <Reveal delay={0.1}>
-          <div className="mt-4 flex flex-col gap-6 rounded-[20px] border border-ube/15 bg-ube-tint p-8 md:flex-row md:items-center md:justify-between md:p-10">
-            <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[12px] bg-ube text-white">
-                <Sparkles size={20} strokeWidth={1.6} />
-              </span>
-              <div>
-                <p className="mono-label text-ube">Next · For AI That Touches Money</p>
-                <p className="display mt-2 text-[1.7rem] leading-tight text-ink">Harness &amp; Agent OS</p>
-                <p className="mt-1 max-w-xl text-[15px] text-ink-2">
-                  Policy-bound payments for AI agents: the owner sets the rules, the agent pays within them, ENOS verifies every step.
-                </p>
-              </div>
-            </div>
-            <a
-              href={`mailto:${site.contactEmail}?subject=ENOS%20partnership`}
-              className="press group inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap rounded-full bg-deep px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-deep-800 md:self-auto"
-            >
-              Partner With Us
-              <ArrowUpRight size={18} strokeWidth={1.8} />
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

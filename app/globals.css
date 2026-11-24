@@ -71,6 +71,16 @@ body {
   font-weight: 500;
 }
 
+/* Heavier display for the one standalone sub-headline (the ENOS Green band) */
+.display-heavy {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+.display-heavy em {
+  font-weight: 800;
+}
+
 /* Eyebrow: mono, uppercase, 0.16em, with a short leading rule */
 .eyebrow {
   font-family: var(--font-mono);
@@ -96,6 +106,24 @@ body {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* Keyboard focus: a chartreuse ring on dark grounds, deep green on light ones; never removed */
+:focus-visible {
+  outline: 2px solid var(--color-chartreuse);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.bg-parchment :focus-visible,
+.bg-white :focus-visible,
+.bg-enos :focus-visible,
+.bg-chartreuse:focus-visible {
+  outline-color: var(--color-deep);
+}
+
+/* Anchored sections clear the fixed nav */
+section[id] {
+  scroll-margin-top: 84px;
 }
 
 /* Deep Green ground, per the brand book's green spread */
@@ -128,6 +156,32 @@ body {
 .lift:hover { transform: translateY(-3px); }
 
 .tnum { font-variant-numeric: tabular-nums; }
+
+/* Range sliders (savings calculator) */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-deep) var(--pct), var(--color-nil) var(--pct));
+  cursor: pointer;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 999px;
+  background: var(--color-chartreuse);
+  border: 3px solid var(--color-deep);
+  box-shadow: 0 4px 12px -2px rgba(24, 58, 45, 0.4);
+}
+.range::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 999px;
+  background: var(--color-chartreuse);
+  border: 3px solid var(--color-deep);
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
