@@ -44,7 +44,7 @@ All page settings are in `lib/site.ts`:
 | `signupUrl` | `#get-started` (scrolls to the final CTA) | Replace with the real sign-up or waitlist URL |
 | `contactEmail` | `lawrence@enosone.com` | Partner and investor enquiries |
 | `stablecoin` | `USDT` | The digital-dollar balance named across the page — change it in one place |
-| `proof` | 60K merchants · $0.85bn FY26 volume · HK/PH/UAE · 200+ countries | Canonical figures; update when they change |
+| `proof` | 60K merchants · $0.85bn FY26 volume · HK/PH/UAE · 100+ countries | Canonical figures; update when they change |
 | `draftNote` | Draft banner in the footer | Replace with the legal disclosure before publishing |
 
 All balances, invoices and names in the product mockups are made up for illustration.

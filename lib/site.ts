@@ -19,5 +19,5 @@ export const proof = [
   { value: "60K", label: "Active merchants on ENOS rails" },
   { value: "$0.85bn", label: "FY26 payment volume" },
   { value: "3", label: "Live markets today · HK · PH · UAE" },
-  { value: "200+", label: "Countries reachable through partners" },
+  { value: "100+", label: "Countries reachable through partners" },
 ];
