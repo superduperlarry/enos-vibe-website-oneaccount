@@ -21,26 +21,26 @@ import { site } from "@/lib/site";
 const steps = [
   {
     n: "01",
-    title: "Get Paid",
-    accent: "From Anywhere.",
+    title: "Get paid",
+    accent: "from anywhere.",
     body: "Send an invoice. Clients pay on the local networks they already use — QR, mobile wallet, instant bank transfer. Your business doesn't need a local bank ID. ENOS does.",
   },
   {
     n: "02",
     title: "Hold",
-    accent: "in Dollars.",
+    accent: "in dollars.",
     body: `Everything lands in ${site.product}, in USD or ${site.stablecoin}. No more earnings stuck in one currency, in one country.`,
   },
   {
     n: "03",
-    title: "Plug In",
+    title: "Plug in",
     accent: "AI and SaaS.",
     body: "Pay for the AI APIs, assistants and software the first billion uses — straight from your account, with partner trials to start.",
   },
   {
     n: "04",
     title: "Grow",
-    accent: "on Your Terms.",
+    accent: "on your terms.",
     body: "As you grow, ENOS runs your subscriptions — then cards, credit and treasury for qualified businesses. Same account from one founder to a full team.",
   },
 ];
@@ -86,11 +86,11 @@ export default function FlowStory() {
   const chartOpacity = useTransform(p, [0.74, 0.78], [0, 1]);
   const cardGlow = useTransform(p, [0, 0.25, 0.5, 0.75, 1], [0.25, 0.55, 0.45, 0.6, 0.9]);
   const toolsDim = useTransform(p, [0.76, 0.86], [1, 0.35]);
-  const cardShadow = useTransform(cardGlow, (g) => `0 0 ${60 + g * 80}px -10px rgba(0,169,79,${g * 0.55}), inset 0 1px 0 rgba(255,255,255,0.12)`);
+  const cardShadow = useTransform(cardGlow, (g) => `0 0 ${60 + g * 80}px -10px rgba(225,255,51,${g}), inset 0 1px 0 rgba(255,255,255,0.12)`);
   const badges = useTransform(p, [0.86, 0.92], [0, 1]);
 
   return (
-    <section id="how" ref={ref} className="ground-deep relative h-[420vh] scroll-mt-0">
+    <section id="how" ref={ref} className="relative h-[420vh] scroll-mt-0 bg-forest-950">
       <div className="grain sticky top-0 flex h-[100svh] items-center overflow-hidden">
         {/* Faint grid */}
         <div
@@ -101,7 +101,7 @@ export default function FlowStory() {
         <div className="relative mx-auto grid w-full max-w-[1400px] gap-6 px-6 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           {/* Copy */}
           <div className="relative z-10 pt-20 lg:pt-0">
-            <p className="eyebrow text-enos-300">How It Works</p>
+            <p className="kicker text-lime">How it works</p>
             <div className="mt-5 flex gap-2" aria-hidden>
               {steps.map((s, i) => (
                 <StepBar key={s.n} p={p} i={i} />
@@ -117,8 +117,8 @@ export default function FlowStory() {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <p className="font-mono text-sm text-white/40">{steps[step].n} / 04</p>
-                  <h2 className="display mt-3 text-[clamp(2.4rem,5.2vw,5.2rem)] leading-[1] text-white">
-                    {steps[step].title} <em className="text-chartreuse">{steps[step].accent}</em>
+                  <h2 className="mt-3 font-display text-[clamp(2.4rem,5.2vw,5.4rem)] leading-[0.98] tracking-[-0.02em] text-white">
+                    {steps[step].title} <em className="text-lime">{steps[step].accent}</em>
                   </h2>
                   <p className="mt-5 max-w-md text-[15px] font-light leading-relaxed text-white/70 md:text-lg">{steps[step].body}</p>
                 </motion.div>
@@ -138,8 +138,8 @@ export default function FlowStory() {
               >
                 <defs>
                   <linearGradient id="gfill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stopColor="#00A94F" stopOpacity="0.30" />
-                    <stop offset="1" stopColor="#00A94F" stopOpacity="0" />
+                    <stop offset="0" stopColor="#E1FF33" stopOpacity="0.25" />
+                    <stop offset="1" stopColor="#E1FF33" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <motion.path
@@ -150,7 +150,7 @@ export default function FlowStory() {
                 <motion.path
                   d="M20 540 C 140 530, 200 500, 280 470 S 420 400, 480 330 S 610 150, 700 70"
                   fill="none"
-                  stroke="#00A94F"
+                  stroke="#E1FF33"
                   strokeWidth="3"
                   strokeLinecap="round"
                   style={{ pathLength: chartDraw }}
@@ -174,22 +174,25 @@ export default function FlowStory() {
 
               {/* The account card */}
               <motion.div
-                className="absolute left-1/2 top-1/2 z-20 w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-[20px] border border-white/15 bg-mineral p-6 font-[family-name:var(--font-ui)] text-white"
+                className="absolute left-1/2 top-1/2 z-20 w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-[26px] border border-white/15 bg-gradient-to-br from-forest-800 via-forest-900 to-forest-950 p-6 text-white"
                 style={{ boxShadow: cardShadow }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="mono-label text-[10px] text-white/60">{site.product}</span>
-                  <span className="h-2 w-2 rounded-full bg-enos" />
+                  <span className="kicker text-[10px] text-white/50">{site.product}</span>
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+                  </span>
                 </div>
-                <motion.p className="tnum mt-4 text-[40px] font-semibold leading-none tracking-[-0.02em]">{balanceText}</motion.p>
+                <motion.p className="mt-4 font-display text-[44px] leading-none tabular-nums">{balanceText}</motion.p>
                 <p className="mt-2 text-xs text-white/45">Paid from 4 countries · local rails</p>
                 <motion.div style={{ opacity: holdOpacity }} className="mt-5 space-y-2.5">
                   <Bar label="USD" value="$7,863" width={usdPct} />
                   <Bar label={site.stablecoin} value="4,617" width={usdcPct} />
                 </motion.div>
                 <motion.div style={{ opacity: chartOpacity }} className="mt-5 flex items-end justify-between border-t border-white/10 pt-4">
-                  <span className="mono-label text-[10px] text-white/60">Monthly revenue</span>
-                  <motion.span className="display text-[28px] text-chartreuse">{revenueText}</motion.span>
+                  <span className="kicker text-[10px] text-white/50">Monthly revenue</span>
+                  <motion.span className="font-display text-2xl text-lime">{revenueText}</motion.span>
                 </motion.div>
               </motion.div>
 
@@ -201,7 +204,7 @@ export default function FlowStory() {
               {/* Unlock badges */}
               <motion.div style={{ opacity: badges }} className="absolute bottom-2 left-1/2 z-30 flex -translate-x-1/2 gap-2">
                 {["Cards", "Credit", "Treasury"].map((b) => (
-                  <span key={b} className="whitespace-nowrap rounded-full border border-saffron/70 bg-deep-900/85 px-4 py-2 text-sm text-saffron backdrop-blur">
+                  <span key={b} className="whitespace-nowrap rounded-full border border-lime/40 bg-forest-900/80 px-4 py-2 text-sm text-lime backdrop-blur">
                     {b} · next
                   </span>
                 ))}
@@ -210,7 +213,7 @@ export default function FlowStory() {
           </div>
         </div>
 
-        <p className="mono-label absolute bottom-5 right-6 text-[10px] text-white/35 md:right-10">Illustrative figures</p>
+        <p className="kicker absolute bottom-5 right-6 text-[10px] text-white/30 md:right-10">Illustrative figures</p>
       </div>
     </section>
   );
@@ -220,7 +223,7 @@ function StepBar({ p, i }: { p: MotionValue<number>; i: number }) {
   const width = useTransform(p, [i / 4, (i + 1) / 4], ["0%", "100%"]);
   return (
     <span className="h-[3px] w-10 overflow-hidden rounded-full bg-white/15 md:w-14">
-      <motion.span className="block h-full bg-enos" style={{ width }} />
+      <motion.span className="block h-full bg-lime" style={{ width }} />
     </span>
   );
 }
@@ -233,7 +236,7 @@ function Bar({ label, value, width }: { label: string; value: string; width: Mot
         <span className="font-mono text-white/55">{value}</span>
       </div>
       <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/10">
-        <motion.div className="h-full rounded-full bg-enos" style={{ width }} />
+        <motion.div className="h-full rounded-full bg-lime" style={{ width }} />
       </div>
     </div>
   );
@@ -252,7 +255,7 @@ function FlightPath({ p, i, from, mid }: { p: MotionValue<number>; i: number; fr
     <motion.path
       d={`M ${from[0]} ${from[1]} Q ${mid[0]} ${mid[1]} 0 0`}
       fill="none"
-      stroke="#D8FF32"
+      stroke="#E1FF33"
       strokeWidth="1.5"
       strokeDasharray="4 6"
       style={{ pathLength: draw, opacity: op }}
@@ -269,14 +272,14 @@ function InvoiceChip({ p, i, inv }: { p: MotionValue<number>; i: number; inv: (t
   return (
     <motion.div
       style={{ x, y, scale, opacity }}
-      className="absolute left-1/2 top-1/2 z-30 -ml-[105px] -mt-[30px] flex w-[210px] items-center gap-3 rounded-2xl border border-line bg-white p-3 font-[family-name:var(--font-ui)] text-ink shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]"
+      className="absolute left-1/2 top-1/2 z-30 -ml-[105px] -mt-[30px] flex w-[210px] items-center gap-3 rounded-2xl border border-white/15 bg-paper p-3 text-ink shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]"
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-enos-50 font-mono text-[10px] font-semibold text-enos-800">INV</span>
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-forest-900 font-mono text-[10px] text-lime">INV</span>
       <span className="min-w-0 flex-1">
         <span className="block text-[13px] font-semibold">{inv.city}</span>
-        <span className="block text-[11px] text-muted">{inv.rail}</span>
+        <span className="block text-[11px] text-stone">{inv.rail}</span>
       </span>
-      <span className="tnum text-[13px] font-semibold text-enos-700">{inv.amount}</span>
+      <span className="font-mono text-[13px] font-medium text-forest-700">{inv.amount}</span>
     </motion.div>
   );
 }
@@ -287,7 +290,7 @@ function ToolLine({ p, i, pos }: { p: MotionValue<number>; i: number; pos: reado
   const s = toolWin(i);
   const draw = useTransform(p, [s + 0.03, s + 0.08], [0, 1]);
   return (
-    <motion.line x1="0" y1="0" x2={pos[0]} y2={pos[1]} stroke="#A2B9AE" strokeOpacity="0.45" strokeWidth="1.5" style={{ pathLength: draw }} />
+    <motion.line x1="0" y1="0" x2={pos[0]} y2={pos[1]} stroke="#E1FF33" strokeOpacity="0.35" strokeWidth="1.5" style={{ pathLength: draw }} />
   );
 }
 
@@ -313,13 +316,13 @@ function ToolTile({
   return (
     <motion.div
       style={{ x, y, rotate, opacity }}
-      className="absolute left-1/2 top-1/2 z-10 -ml-[62px] -mt-[30px] flex h-[60px] w-[124px] items-center gap-2.5 rounded-2xl border border-white/15 bg-deep-800/95 px-3 font-[family-name:var(--font-ui)] text-white backdrop-blur"
+      className="absolute left-1/2 top-1/2 z-10 -ml-[62px] -mt-[30px] flex h-[60px] w-[124px] items-center gap-2.5 rounded-2xl border border-white/15 bg-forest-800/90 px-3 text-white backdrop-blur"
     >
-      <span className="grid h-8 w-8 place-items-center rounded-xl bg-ube text-white">
+      <span className="grid h-8 w-8 place-items-center rounded-xl bg-lime text-forest-950">
         <Icon size={16} />
       </span>
       <span className="text-[13px] font-medium">{tool.label}</span>
-      <motion.span style={{ opacity: connected }} className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-deep-900 bg-enos" />
+      <motion.span style={{ opacity: connected }} className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-forest-950 bg-lime" />
     </motion.div>
   );
 }
