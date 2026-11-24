@@ -3,6 +3,7 @@
 import { AnimatePresence, animate, motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDownLeft, Check, FileText, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { site } from "@/lib/site";
 
 export default function Solution() {
   const ref = useRef<HTMLElement>(null);
@@ -29,18 +30,18 @@ export default function Solution() {
         <div>
           <p className="kicker text-stone">The fix</p>
           <h2 className="mt-8 font-display text-[clamp(2.6rem,5.4vw,5.4rem)] leading-[0.98] tracking-[-0.02em]">
-            One account.
+            Get paid locally.
             <br />
-            USD + USDC.
+            Hold dollars.
             <br />
-            <em className="text-teal-ink">Plugged into AI.</em>
+            <em className="text-teal-ink">Grow with AI.</em>
           </h2>
           <p className="mt-8 max-w-md text-lg font-light leading-relaxed text-ink/75">
-            Invoice anyone. Get paid on local rails. Hold dollars. Then run your business on the same AI and SaaS the first
-            billion uses — with partner trials and deals built in.
+            Invoice anyone. Clients pay on the networks they already use — QR, mobile wallets, instant bank transfer. Hold
+            dollars. Then run your business on the same AI and software the first billion uses, with partner trials built in.
           </p>
           <ul className="mt-10 space-y-4 text-[16px]">
-            {["One balance in USD and USDC", "Invoices your clients can actually pay", "AI and SaaS, no card required"].map((t) => (
+            {[`One balance in USD and ${site.stablecoin}`, "Invoices clients can pay locally", "AI and SaaS perks from day one"].map((t) => (
               <li key={t} className="flex items-center gap-3">
                 <span className="grid h-7 w-7 place-items-center rounded-full bg-forest-900 text-lime">
                   <Check size={14} strokeWidth={3} />
@@ -174,7 +175,7 @@ function Phone() {
               <p className="mt-0.5 text-sm font-semibold">$31,480.20</p>
             </div>
             <div className="rounded-2xl bg-white/[0.06] p-3">
-              <p className="text-[11px] text-white/50">USDC</p>
+              <p className="text-[11px] text-white/50">{site.stablecoin}</p>
               <p className="mt-0.5 text-sm font-semibold">16,730.35</p>
             </div>
           </div>
@@ -199,7 +200,7 @@ function Phone() {
             {[
               [ArrowDownLeft, "Invoice #0142", "+$1,200.00", true],
               [Sparkles, "AI API credits", "−$40.00", false],
-              [ArrowDownLeft, "Creator payout", "+850 USDC", true],
+              [ArrowDownLeft, "Creator payout", `+850 ${site.stablecoin}`, true],
               [FileText, "Design SaaS", "−$24.00", false],
             ].map(([Icon, l, a, pos], i) => {
               const I = Icon as typeof Sparkles;

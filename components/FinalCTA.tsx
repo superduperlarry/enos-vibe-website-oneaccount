@@ -32,7 +32,7 @@ export default function FinalCTA() {
               Open your account
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </a>
-            <span className="kicker text-white/50">Anyone · Anywhere · One account</span>
+            <span className="kicker text-white/50">One founder · Every business · One account</span>
           </div>
         </Reveal>
       </div>

@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import { Bot, Brush, Clapperboard, Code2, Megaphone, MessagesSquare } from "lucide-react";
 import { useRef, useState } from "react";
+import { site } from "@/lib/site";
 
 /**
  * Pinned scroll story: money moves into one account, then out into AI tools, then the business grows.
@@ -22,25 +23,25 @@ const steps = [
     n: "01",
     title: "Get paid",
     accent: "from anywhere.",
-    body: "Send an invoice. Clients pay with the local methods they already use — bank transfer, mobile wallet, QR. Selling globally? We can help you set up a company too.",
+    body: "Send an invoice. Clients pay on the local networks they already use — QR, mobile wallet, instant bank transfer. Your business doesn't need a local bank ID. ENOS does.",
   },
   {
     n: "02",
     title: "Hold",
     accent: "in dollars.",
-    body: "Everything lands in one account, in USD or USDC. No more earnings stuck in one currency, in one country.",
+    body: `Everything lands in ${site.product}, in USD or ${site.stablecoin}. No more earnings stuck in one currency, in one country.`,
   },
   {
     n: "03",
     title: "Plug in",
     accent: "AI and SaaS.",
-    body: "Pay for the AI APIs, assistants and SaaS the first billion uses — no card needed, with partner trials to start.",
+    body: "Pay for the AI APIs, assistants and software the first billion uses — straight from your account, with partner trials to start.",
   },
   {
     n: "04",
     title: "Grow",
     accent: "on your terms.",
-    body: "As you scale, ENOS runs your subscriptions. Debit cards, credit and treasury are coming for qualified merchants.",
+    body: "As you grow, ENOS runs your subscriptions — then cards, credit and treasury for qualified businesses. Same account from one founder to a full team.",
   },
 ];
 
@@ -177,7 +178,7 @@ export default function FlowStory() {
                 style={{ boxShadow: cardShadow }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="kicker text-[10px] text-white/50">ENOS · One account</span>
+                  <span className="kicker text-[10px] text-white/50">{site.product}</span>
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
@@ -187,7 +188,7 @@ export default function FlowStory() {
                 <p className="mt-2 text-xs text-white/45">Paid from 4 countries · local rails</p>
                 <motion.div style={{ opacity: holdOpacity }} className="mt-5 space-y-2.5">
                   <Bar label="USD" value="$7,863" width={usdPct} />
-                  <Bar label="USDC" value="4,617" width={usdcPct} />
+                  <Bar label={site.stablecoin} value="4,617" width={usdcPct} />
                 </motion.div>
                 <motion.div style={{ opacity: chartOpacity }} className="mt-5 flex items-end justify-between border-t border-white/10 pt-4">
                   <span className="kicker text-[10px] text-white/50">Monthly revenue</span>
@@ -202,9 +203,9 @@ export default function FlowStory() {
 
               {/* Unlock badges */}
               <motion.div style={{ opacity: badges }} className="absolute bottom-2 left-1/2 z-30 flex -translate-x-1/2 gap-2">
-                {["Debit card", "Credit", "Treasury"].map((b) => (
+                {["Cards", "Credit", "Treasury"].map((b) => (
                   <span key={b} className="whitespace-nowrap rounded-full border border-lime/40 bg-forest-900/80 px-4 py-2 text-sm text-lime backdrop-blur">
-                    {b} · soon
+                    {b} · next
                   </span>
                 ))}
               </motion.div>

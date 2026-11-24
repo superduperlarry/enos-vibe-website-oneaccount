@@ -13,8 +13,8 @@ const ease = [0.22, 1, 0.36, 1] as const;
 // Illustrative activity — not real customer data.
 const feed = [
   { icon: ArrowDownLeft, from: "Manila", to: "San Francisco client", amount: "+$1,200.00", note: "Invoice paid · local rail" },
-  { icon: Sparkles, from: "Lagos", to: "AI API credits", amount: "−$40.00", note: "Auto-pay · no card" },
-  { icon: ArrowDownLeft, from: "Jakarta", to: "Platform payout", amount: "+850.00 USDC", note: "Creator earnings" },
+  { icon: Sparkles, from: "Lagos", to: "AI API credits", amount: "−$40.00", note: "Auto-pay · subscription" },
+  { icon: ArrowDownLeft, from: "Jakarta", to: "Platform payout", amount: `+850.00 ${site.stablecoin}`, note: "Creator earnings" },
   { icon: ArrowDownLeft, from: "Karachi", to: "Dubai buyer", amount: "+$3,400.00", note: "Invoice paid · local rail" },
   { icon: Sparkles, from: "Nairobi", to: "Design SaaS", amount: "−$24.00", note: "Trial → paid" },
 ];
@@ -38,11 +38,12 @@ export default function Hero() {
         initial={reduce ? false : { opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2.2, ease }}
-        className="absolute inset-x-[-30%] top-[40px] h-[420px] md:inset-x-auto md:left-[33%] md:right-[-12%] md:top-[2%] md:bottom-[-2%] md:h-auto"
+        className="absolute inset-x-[-30%] top-[40px] h-[420px] md:inset-x-auto md:left-[42%] md:right-[-22%] lg:left-[33%] lg:right-[-12%] md:top-[2%] md:bottom-[-2%] md:h-auto"
       >
         <Globe className="h-full w-full" />
       </motion.div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-forest-950 to-transparent" aria-hidden />
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[78%] bg-[linear-gradient(90deg,rgba(0,26,15,.92)_0%,rgba(0,26,15,.75)_45%,transparent_100%)] md:block lg:w-[62%]" aria-hidden />
 
       {/* Copy */}
       <div className="relative z-10 mx-auto mt-auto w-full max-w-[1400px] px-6 pb-14 pt-[420px] md:px-10 md:pb-20 md:pt-40">
@@ -51,7 +52,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
           </span>
-          One account · USD + USDC · Built for the Global South
+          {site.product} · {site.categoryLine}
         </motion.p>
 
         <motion.h1
@@ -66,23 +67,23 @@ export default function Hero() {
         <div className="mt-10 grid items-end gap-10 lg:grid-cols-[1fr_auto]">
           <div>
             <motion.p {...fade(0.55)} className="max-w-xl text-lg font-light leading-relaxed text-white/75 md:text-xl">
-              A USD and USDC account for anyone, anywhere — plugged straight into the AI and SaaS tools your business runs on.
+              The dollar account for one-person companies — and every business in the Global South. Get paid on local networks, hold USD and {site.stablecoin}, and pay for the AI and software you grow on.
             </motion.p>
             <motion.div {...fade(0.7)} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={site.signupUrl}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-4 text-[15px] font-semibold text-forest-950 shadow-[0_0_40px_-6px_rgba(225,255,51,0.6)] transition hover:bg-white"
+                className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-lime px-7 py-4 text-[15px] font-semibold text-forest-950 shadow-[0_0_40px_-6px_rgba(225,255,51,0.6)] transition hover:bg-white"
               >
                 Open your account
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="#how"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-4 text-[15px] font-medium text-white/90 backdrop-blur-sm transition hover:border-white/50"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white/20 px-7 py-4 text-[15px] font-medium text-white/90 backdrop-blur-sm transition hover:border-white/50"
               >
                 See how it works
               </a>
-              <span className="kicker mt-2 text-white/45 sm:ml-4 sm:mt-0">No card · No borders · No bank branch</span>
+              <span className="mt-2 max-w-[17rem] text-sm font-light leading-snug text-white/55 sm:ml-4 sm:mt-0">Your business doesn&apos;t need a local bank ID. <span className="text-lime">ENOS does.</span></span>
             </motion.div>
           </div>
           <motion.div {...fade(0.9)} className="hidden lg:block">

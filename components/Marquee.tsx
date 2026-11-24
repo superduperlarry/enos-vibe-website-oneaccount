@@ -1,4 +1,4 @@
-const words = ["No card", "No borders", "No bank branch", "Anyone", "Anywhere", "One account"];
+const words = ["One account", "Every rail", "No borders", "No bank branch", "Built in the South", "Ready for the world"];
 
 export default function Marquee() {
   const row = (
@@ -12,7 +12,7 @@ export default function Marquee() {
     </div>
   );
   return (
-    <section aria-label="No card. No borders. No bank branch." className="overflow-hidden bg-lime py-8 md:py-12">
+    <section aria-label="One account. Every rail. No borders. No bank branch." className="overflow-hidden bg-lime py-8 md:py-12">
       <div className="marquee flex w-max" style={{ ["--marquee-speed" as string]: "45s" }}>
         {row}
         {row}

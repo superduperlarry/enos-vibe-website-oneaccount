@@ -1,6 +1,6 @@
 # ENOS — marketing site
 
-**ENOS_Website_v3_24Nov2026 · INTERNAL DRAFT.** Supersedes v2. v3 adds a pinned scroll story (Get paid → Hold in dollars → Plug in AI → Grow) and small payment animations in the app mockup.
+**ENOS_Website_v4_24Nov2026 · INTERNAL DRAFT** for internal, investor and partner review; not for publication. Supersedes v3. v4 rewrites the copy to the ENOS One story: one-person companies lead, every business type is served, USDT replaces USDC, and the page adds a proof strip and a mission section.
 
 Single-page marketing site built with Next.js (App Router), TypeScript, Tailwind CSS v4, Framer Motion and three.js. It has no backend, and Vercel deploys it with default settings.
 
@@ -35,15 +35,17 @@ vercel --prod     # production
 
 **Static export (optional):** `npm run export` writes a plain static site to `/out` that can be hosted anywhere.
 
-## Edit before launch
+## Settings
 
-All launch settings are in `lib/site.ts`:
+All page settings are in `lib/site.ts`:
 
 | Setting | Now | Action |
 |---|---|---|
 | `signupUrl` | `#get-started` (scrolls to the final CTA) | Replace with the real sign-up or waitlist URL |
-| `contactEmail` | `hello@enosone.com` | Confirm the inbox exists |
-| `legal` | Placeholder disclosure | Compliance must approve the wording |
+| `contactEmail` | `lawrence@enosone.com` | Partner and investor enquiries |
+| `stablecoin` | `USDT` | The digital-dollar balance named across the page — change it in one place |
+| `proof` | 60K merchants · $0.85bn FY26 volume · HK/PH/UAE · 200+ countries | Canonical figures; update when they change |
+| `draftNote` | Draft banner in the footer | Replace with the legal disclosure before publishing |
 
 All balances, invoices and names in the product mockups are made up for illustration.
 
@@ -56,9 +58,10 @@ app/
   globals.css      ENOS brand tokens, marquee, grain
 components/
   Nav, Hero, Globe (three.js), Marquee, Problem, Solution (3D phone),
-  FlowStory (pinned scroll story), Audience, Features, FinalCTA, Footer, Reveal
+  ProofStrip, FlowStory (pinned scroll story), WaysIn (mission + every customer type),
+  Features, FinalCTA, Footer, Reveal
 lib/
-  site.ts          launch settings
+  site.ts          page settings and proof figures
   land-dots.json   pre-computed land points for the globe (Natural Earth 110m, public domain)
 public/            ENOS wordmark, "e" mark, favicon
 ```

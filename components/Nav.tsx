@@ -7,8 +7,8 @@ import wordmark from "@/public/enos-wordmark-white.png";
 
 const links = [
   { href: "#how", label: "How it works" },
-  { href: "#features", label: "Features" },
   { href: "#who", label: "Who it's for" },
+  { href: "#features", label: "Features" },
 ];
 
 export default function Nav() {

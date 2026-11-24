@@ -1,4 +1,5 @@
-import { Ban, Globe2, Plug, Smartphone, Wallet } from "lucide-react";
+import { Globe2, MapPin, Plug, Smartphone, Wallet } from "lucide-react";
+import { site } from "@/lib/site";
 import Reveal from "./Reveal";
 
 const tools = ["AI APIs", "Chat assistants", "Design suites", "Dev tools", "Ad platforms", "Storefronts", "Video tools", "CRM"];
@@ -16,7 +17,7 @@ export default function Features() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="max-w-sm text-lg font-light text-white/65">
-              One account replaces the bank, the payment app and the card you never got.
+              One account replaces the bank branch, the payment apps and the workarounds.
             </p>
           </Reveal>
         </div>
@@ -29,7 +30,7 @@ export default function Features() {
               <Icon><Plug size={20} /></Icon>
               <h3 className="relative mt-10 font-display text-[2.2rem] leading-[1.05]">Plug into AI and SaaS</h3>
               <p className="relative mt-3 max-w-lg text-[17px] font-light leading-relaxed text-white/70">
-                Pay for OpenAI APIs, ChatGPT and the rest of your stack straight from your account — and start with partner trials and deals.
+                Pay for AI APIs, assistants and the rest of your stack straight from your account — starting with partner trials and deals.
               </p>
               <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
                 <div className="marquee flex w-max gap-3" style={{ ["--marquee-speed" as string]: "28s" }}>
@@ -43,17 +44,17 @@ export default function Features() {
             </article>
           </Reveal>
 
-          <Tile className="md:col-span-2" icon={<Smartphone size={20} />} title="Instant onboarding" body="Open your account from your phone. No branch visit, no paperwork pile." delay={0.06} />
-          <Tile className="md:col-span-2" icon={<Wallet size={20} />} title="USD and USDC" body="Hold, send and receive both — from one balance." delay={0.1} />
+          <Tile className="md:col-span-2" icon={<Smartphone size={20} />} title="Open from your phone" body="Business onboarding in minutes, not branch visits. One-person companies welcome." delay={0.06} />
+          <Tile className="md:col-span-2" icon={<Wallet size={20} />} title={`USD and ${site.stablecoin}`} body="Hold, send and receive both — from one balance." delay={0.1} />
           <Tile className="md:col-span-2" icon={<Globe2 size={20} />} title="Global rails" body="Invoice anyone. Clients pay with the methods they already use; the money lands in your global account." delay={0.14} />
           <Reveal className="md:col-span-2" delay={0.18}>
             <article className="flex h-full flex-col justify-between rounded-3xl bg-lime p-8 text-forest-950 md:p-10">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-forest-950 text-lime">
-                <Ban size={20} />
+                <MapPin size={20} />
               </span>
               <div>
-                <h3 className="mt-10 font-display text-[2.2rem] leading-[1.05]">No card needed</h3>
-                <p className="mt-3 text-[17px] leading-relaxed text-forest-950/75">Built for the businesses the card networks skipped.</p>
+                <h3 className="mt-10 font-display text-[2.2rem] leading-[1.05]">Local everywhere</h3>
+                <p className="mt-3 text-[17px] leading-relaxed text-forest-950/75">Your business doesn&apos;t need a local bank ID. ENOS does.</p>
               </div>
             </article>
           </Reveal>

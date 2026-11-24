@@ -9,8 +9,8 @@ const pains = [
   },
   {
     tag: "02 · The tools",
-    title: "The tools want a card.",
-    body: "AI and SaaS sign-ups ask for a card you can't get. So you build the hard way, without them.",
+    title: "The tools expect a foreign card.",
+    body: "AI and SaaS sign-ups ask for a card most Global South founders can't get. So they build the hard way, without them.",
     bar: "bg-amber",
   },
   {
@@ -30,7 +30,7 @@ export default function Problem() {
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="mt-8 max-w-[18ch] font-display text-[clamp(2.4rem,5.6vw,5.6rem)] leading-[1] tracking-[-0.02em]">
-            The first billion has Visa, Mastercard and Stripe. The next billion has <em className="text-teal-ink">nothing.</em>
+            Your customers are global. <em className="text-teal-ink">Your bank isn&apos;t.</em>
           </h2>
         </Reveal>
 

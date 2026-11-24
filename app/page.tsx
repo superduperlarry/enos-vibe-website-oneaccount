@@ -1,4 +1,3 @@
-import Audience from "@/components/Audience";
 import Features from "@/components/Features";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -7,7 +6,9 @@ import FlowStory from "@/components/FlowStory";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import Problem from "@/components/Problem";
+import ProofStrip from "@/components/ProofStrip";
 import Solution from "@/components/Solution";
+import WaysIn from "@/components/WaysIn";
 
 export default function Home() {
   return (
@@ -15,10 +16,11 @@ export default function Home() {
       <Nav />
       <Hero />
       <Marquee />
+      <ProofStrip />
       <Problem />
       <Solution />
       <FlowStory />
-      <Audience />
+      <WaysIn />
       <Features />
       <FinalCTA />
       <Footer />

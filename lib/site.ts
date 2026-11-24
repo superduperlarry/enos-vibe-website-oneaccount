@@ -1,12 +1,23 @@
-// Edit these before going live.
+// Site-wide settings. Change these in one place.
 export const site = {
   name: "ENOS",
+  product: "ENOS One",
+  categoryLine: "One Account. Every Rail.",
   tagline: "The financial operating system for the Global South",
+  // The digital-dollar balance shown across the page. USDT matches the Tether partnership; switch here if that changes.
+  stablecoin: "USDT",
   // Where "Open your account" goes. Replace with the real sign-up / waitlist URL.
   signupUrl: "#get-started",
-  // Public contact inbox — confirm it exists before launch.
-  contactEmail: "hello@enosone.com",
-  // Legal footer line — must be approved by compliance before launch.
-  legal:
-    "ENOS is a financial technology company, not a bank. Services are provided through licensed partners where required. [Licensing disclosure pending compliance review.]",
+  // Partner and investor enquiries.
+  contactEmail: "lawrence@enosone.com",
+  // Shown in the footer while the page is a draft.
+  draftNote: "Draft for internal, investor and partner review · Not for publication · Illustrative figures marked on page",
 };
+
+// Proof points — canonical figures as ruled by Lawrence (60K active merchants, 11 Oct 2026; FY26 TPV per deck v18_EOS).
+export const proof = [
+  { value: "60K", label: "Active merchants on ENOS rails" },
+  { value: "$0.85bn", label: "FY26 payment volume" },
+  { value: "3", label: "Live markets today · HK · PH · UAE" },
+  { value: "200+", label: "Countries reachable through partners" },
+];

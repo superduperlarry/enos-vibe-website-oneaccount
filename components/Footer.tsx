@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
         <div className="mt-14 flex flex-col gap-4 border-t border-white/[0.08] pt-8 text-xs leading-relaxed md:flex-row md:justify-between">
           <p className="kicker text-[11px]">© {new Date().getFullYear()} ENOS · Built. Licensed. Live.</p>
-          <p className="max-w-2xl md:text-right">{site.legal}</p>
+          <p className="max-w-2xl md:text-right">{site.draftNote}</p>
         </div>
       </div>
     </footer>

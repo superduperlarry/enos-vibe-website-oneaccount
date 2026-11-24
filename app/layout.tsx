@@ -12,13 +12,13 @@ import "@fontsource/spline-sans-mono/latin-500.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ENOS — One account. The whole internet economy.",
+  title: "ENOS One — One Account. Every Rail.",
   description:
-    "A USD and USDC account for anyone, anywhere — plugged straight into the AI and SaaS tools your business runs on. No card. No borders. No bank branch.",
+    "ENOS One is the dollar account for one-person companies and every business in the Global South — get paid on local networks, hold dollars, and grow with AI.",
   icons: { icon: "/icon.svg" },
   openGraph: {
-    title: "ENOS — One account. The whole internet economy.",
-    description: "A USD and USDC account for anyone, anywhere, plugged into AI and SaaS.",
+    title: "ENOS One — One Account. Every Rail.",
+    description: "The dollar account for one-person companies and every business in the Global South.",
     type: "website",
   },
 };
